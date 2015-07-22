@@ -1,0 +1,74 @@
+
+<!--
+Now let's go back to our Cat Photo App. This time, we'll style it using the popular Twitter Bootstrap responsive CSS framework. First, add a new image with the src attribute of "http://bit.ly/fcc-kittens2", and add the "img-responsive" Bootstrap class to that image.
+
+It would be great if the image could be exactly the width of our phone's screen.
+
+Fortunately, we have access to a Responsive CSS Framework called Bootstrap. You can add Bootstrap to any app just by including it with <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'/> at the top of your HTML. But we've gone ahead and automatically added it to your Cat Photo App for you.
+
+Bootstrap will figure out how wide your screen is and respond by resizing your HTML elements - hence the name Responsive Design.
+
+With responsive design, there is no need to design a mobile version of your website. It will look good on devices with screens of any width.
+
+Now all you need to do is add the "img-responsive" class to your image.
+-->
+
+<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+<link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css'/>
+<style>
+  .red-text {
+    color: red;
+  }
+
+  h2 {
+    font-family: Lobster, Monospace;
+  }
+
+  p {
+    font-size: 16px;
+    font-family: Monospace;
+  }
+
+  .thick-green-border {
+    border-color: green;
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 50%;
+  }
+
+  .smaller-image {
+    width: 100px;
+  }
+</style>
+
+<h2 class='red-text'>CatPhotoApp</h2>
+
+<img class='img-responsive' src="http://bit.ly/fcc-kittens2">
+
+<p>Click here for <a href='#'>cat photos</a>.</p>
+
+<a href='#'><img class='smaller-image thick-green-border' src='https://bit.ly/fcc-kittens'/></a>
+
+<p>Things cats love:</p>
+<ul>
+  <li>cat nip</li>
+  <li>laser pointers</li>
+  <li>lasagna</li>
+</ul>
+<p>Top 3 things cats hate:</p>
+<ol>
+  <li>flea treatment</li>
+  <li>thunder</li>
+  <li>other cats</li>
+</ol>
+<form action="/submit-cat-photo">
+  <label><input type='radio' name='indoor-outdoor'> Indoor</label>
+  <label><input type='radio' name='indoor-outdoor'> Outdoor</label>
+  <br>
+  <label><input type='checkbox' name='personality'> Loving</label>
+  <label><input type='checkbox' name='personality'> Lazy</label>
+  <label><input type='checkbox' name='personality'> Crazy</label>
+  <br>
+  <input type='text' placeholder='cat photo URL' required>
+  <button type='submit'>Submit</button>
+</form>
