@@ -57,3 +57,18 @@ function sleepCheck(numHours) {
 sleepCheck(10);
 sleepCheck(5);
 sleepCheck(8);
+
+//---->  IsEven
+
+var isEven = function(number) {
+  // Your code goes here!
+  if (number % 2 === 0) {
+      return true;
+  }
+  else if (isNaN(number)) {
+      return("ERROR:  Non-numeric input, please enter a number.");
+  }  
+  else {
+      return false;
+  }
+};
