@@ -88,3 +88,14 @@ switch(answer) {
         console.log("No idea where " + answer + " is, but it sounds lovely!");
 }
 
+
+//---> movie review
+
+var getReview = function (movie) {
+  switch(movie) {
+   case "Toy Story 2": return "Great story. Mean prospector.";
+   case "Finding Nemo": return "Cool animation, and funny turtles.";
+   case "The Lion King": return "Great songs."
+   default: return "I don't know!";
+  }
+};
