@@ -378,3 +378,189 @@ function add(firstName, lastName, email, phoneNumber) {
 }
 add("Jennifer", "Prichard", "jenprichard@gmail.com", "513-377-6791");
 list();
+
+//--> married, with method constructor notation
+function Person(job, married) {
+    this.job = job;
+    this.married = married;
+    // add a "speak" method to Person!
+    this.speak = function() {
+        console.log("Hello!");
+    }
+}
+
+var user = new Person("Codecademy Student",false);
+user.speak();
+
+//--> married, with method literal notation
+var james = {
+    job: "programmer",
+    married: false,
+    sayJob: function() {
+        // complete this method
+        console.log("Hi, I work as a " + this.job);
+    }
+};
+
+// james' first job
+james.sayJob();
+
+// change james' job to "super programmer" here
+james.job = "super programmer";
+
+// james' second job
+james.sayJob();
+
+//---->  use variable to display a property
+
+var james = {
+    job: "programmer",
+    married: false
+};
+
+// set to the first property name of "james"
+var aProperty = "job";
+
+// print the value of the first property of "james" 
+// using the variable "aProperty"
+console.log(james[aProperty]);
+
+//-----> using prototype to alter a class prototype
+function Dog (breed) {
+  this.breed = breed;
+};
+
+// here we make buddy and teach him how to bark
+var buddy = new Dog("golden Retriever");
+Dog.prototype.bark = function() {
+  console.log("Woof");
+};
+buddy.bark();
+
+// here we make snoopy
+var snoopy = new Dog("Beagle");
+/// this time it works!
+snoopy.bark();
+
+//--> cat meow
+
+function Cat(name, breed) {
+    this.name = name;
+    this.breed = breed;
+};
+
+// let's make some cats!
+var cheshire = new Cat("Cheshire Cat", "British Shorthair");
+var gary = new Cat("Gary", "Domestic Shorthair");
+
+// add a method "meow" to the Cat class that will allow
+// all cats to print "Meow!" to the console
+Cat.prototype.meow = function() {
+ console.log("Meow!");   
+};
+
+// add code here to make the cats meow!
+cheshire.meow;
+gary.meow;
+
+//--->  Animal
+// create your Animal class here
+function Animal(name, numLegs) {
+  this.name = name;
+  this.numLegs = numLegs;
+};
+
+// create the sayName method for Animal
+Animal.prototype.sayName = function() {
+    console.log("Hi my name is " + this.name);
+};
+
+// provided code to test above constructor and method
+var penguin = new Animal("Captain Cook", 2);
+penguin.sayName();
+
+//---> inheritence
+
+// the original Animal class and sayName method
+function Animal(name, numLegs) {
+    this.name = name;
+    this.numLegs = numLegs;
+};
+Animal.prototype.sayName = function() {
+    console.log("Hi my name is " + this.name);
+};
+
+// define a Penguin class
+function Penguin(name) {
+  this.name = name;
+  this.numLegs = 2;
+};
+
+// set its prototype to be a new instance of Animal
+Penguin.prototype = new Animal();
+
+//--> Private Variable
+//Just as functions can have local variables which can only be accessed from within that function, objects can have private variables. Private variables are pieces of information you do not want to publicly share, and they can only be directly accessed from within the class.
+//The Person class has been modified to have a private variable called bankBalance. Notice that it looks just like a normal variable, but it is defined inside the constructor for Person without using this, but instead using var. This makes bankBalance a private variable.
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+
+    this.getBalance = function() {
+      // your code should return the bankBalance
+      return bankBalance;
+   };  
+ }
+
+// create your Person 
+var john = new Person("John","Jubina",38);
+
+// create a new variable myBalance that calls getBalance()
+var myBalance = john.getBalance();
+console.log(myBalance);
+
+
+//-->  private method
+function Person(first,last,age) {
+   this.firstname = first;
+   this.lastname = last;
+   this.age = age;
+   var bankBalance = 7500;
+  
+   var returnBalance = function() {
+      return bankBalance;
+   };
+       
+   // create the new function here
+   this.askTeller = function() {
+       return returnBalance;   
+   }
+}
+
+var john = new Person('John','Smith',30);
+console.log(john.returnBalance);
+var myBalanceMethod = john.askTeller();
+var myBalance = myBalanceMethod();
+console.log(myBalance);
+
+//---> more private variables
+function StudentReport() {
+    var grade1 = 4;
+    var grade2 = 2;
+    var grade3 = 1;
+    this.getGPA = function() {
+        return (grade1 + grade2 + grade3) / 3;
+    };
+}
+
+var myStudentReport = new StudentReport();
+
+for(var x in myStudentReport) {
+    if(typeof myStudentReport[x] !== "function") {
+        console.log("Muahaha! " + myStudentReport[x]);
+    }
+}
+
+console.log("Your overall GPA is " + myStudentReport.getGPA());

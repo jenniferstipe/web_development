@@ -1,0 +1,269 @@
+Lesson Notes
+abc…	Letters
+123…	Digits
+\d	Any Digit
+\D	Any Non-digit character
+.	Any Character
+\.	Period
+[abc]	Only a, b, or c
+[^abc]	Not a, b, nor c
+[a-z]	Characters a to z
+[0-9]	Numbers 0 to 9
+\w	Any Alphanumeric character
+\W	Any Non-alphanumeric character
+{m}	m Repetitions
+{m,n}	m to n Repetitions
+*	Zero or more repetitions
++	One or more repetitions
+?	Optional character
+\s	Any Whitespace
+\S	Any Non-whitespace character
+^…$	Starts and ends
+(…)	Capture Group
+(a(bc))	Capture Sub-group
+(.*)	Capture all
+(abc|def)	Matches abc or def
+------------------------------------
+Task	Text	 
+Match	abcdefg	Success
+Match	abcde	Success
+Match	abc
+
+Expressions I used that worked:
+
+a
+ab
+abc
+[abc]
+.
+abc{1} //check for 1 repetition of abc
+
+
+-----------------------------------------
+Has to match all 3
+Task	Text	 
+Match	abc123xyz	
+Match	define "123"	
+Match	var g = 123;
+
+Expressions I used that worked:
+123
+[123]
+123*
+123{1}
+
+------------------------------------------
+Task	Text	 
+Match	cat.
+Match	896.
+Match	?=+.
+Skip	abc1
+
+Expressions I used that worked:
+\.
+...\.
+
+-------------------------------------------
+Task	Text	 
+Match	can	
+Match	man	
+Match	fan	
+Skip	dan	
+Skip	ran	
+Skip	pan
+
+Expressions I used that worked:
+[cmf]an
+[^drp]an
+----------------------------------------------
+
+Task	Text	 
+Match	hog	
+Match	dog	
+Skip	bog	
+
+Expressions I used that worked:
+[hd]og
+[^b]og
+----------------------------------------------
+Task	Text	 
+Match	Ana	
+Match	Bob	
+Match	Cpc	
+Skip	aax	
+Skip	bby	
+Skip	ccz
+
+Expressions I used that worked:
+[A-C][n-p][a-c]
+
+----------------------------------------------
+Task	Text	 
+Match	wazzzzup
+Match	wazzzup	
+Skip	wazup
+
+Expressions I used that worked:
+
+[w][a]z{3}.*
+waz{2,4}up
+----------------------------------------------
+Match	aaaabcc	
+Match	aabbbbc	
+Match	aacc	
+Skip	a
+
+Expressions I used that worked:
+aa+b*c+
+a{2,4}b{0,4}c{1,2}
+----------------------------------------------
+Task	Text	 
+Match	1 file found?	
+Match	2 files found?	
+Match	24 files found?	
+Skip	No files found.
+
+Expressions I used that worked:
+files? found\?
+\d+ files? found\?
+----------------------------------------------
+Task	Text	 
+Match	1.   abc	Success
+Match	2.	abc	Success
+Match	3.                   abc	Success
+Skip	4.abc
+
+Expressions I used that worked:
+\d\.\s+abc
+----------------------------------------------
+Task	Text	 
+Match	Mission: successful	Success
+Skip	Last Mission: unsuccessful	Success
+Skip	Next Mission: successful upon capture of target	Success
+
+Expressions I used that worked:
+^Mission: successful$
+----------------------------------------------
+Task	Text	Capture Groups	 
+Capture	file_record_transcript.pdf	file_record_transcript	Success
+Capture	file_07241999.pdf	file_07241999	Success
+Skip	testfile_fake.pdf.tmp
+
+Expressions I used that worked:
+^(file.*)\.pdf$
+(file.+).pdf$
+----------------------------------------------
+Task	Text	Capture Groups	 
+Capture	Jan 1987	Jan 1987 1987
+Capture	May 1969	May 1969 1969
+Capture	Aug 2011
+
+Expressions I used that worked:
+(\w{3}\s(\d{4}))
+(\w+ (\d+))
+----------------------------------------------
+Capture	1280x720	1280 720	
+Capture	1920x1600	1920 1600	
+Capture	1024x768
+
+Expressions I used that worked:
+(\d{4})x(\d{3,4})
+(\d+)x(\d+)
+----------------------------------------------
+Task	Text	 
+Match	I love cats	
+Match	I love dogs	
+Skip	I love logs	
+Skip	I love cogs
+
+Expressions I used that worked:
+I love\s(cats|dogs)
+----------------------------------------------
+Task	Text	 
+Match	3.14529	
+Match	-255.34	
+Match	128	
+Match	1.9e10	
+Match	123,340.00	
+Skip	720p
+
+Expressions I used that worked:
+^\W?\d+[\.,]?\d+\w?\.?\d+$
+^-?\d+(,\d+)*(\.\d+(e\d+)?)?$  (lesson solution)
+----------------------------------------------
+Task	Text	Capture Groups	 
+Capture	415-555-1234	415	
+Capture	650-555-2345	650	
+Capture	(416)555-3456	416	
+Capture	202 555 4567	202	
+Capture	4035555678	403	
+Capture	1 416 555 9292
+
+Expressions I used that worked:
+1?[\s-]?\(?(\d{3})\)?[\s-]?\d{3}[\s-]?\d{4}
+----------------------------------------------
+
+Task	Text	Capture Groups	 
+Capture	tom@hogwarts.com	tom	
+Capture	tom.riddle@hogwarts.com	tom.riddle	
+Capture	tom.riddle+regexone@hogwarts.com	tom.riddle	
+Capture	tom@hogwarts.eu.com	tom	
+Capture	potter@hogwarts.com	potter	
+Capture	harry@hogwarts.com	harry	
+Capture	hermione+regexone@hogwarts.com
+
+Expressions I used that worked:
+(\w+[\.]?\w+)[\.+]?\w*@\w*[\.]?\w+[\.]?\w+  
+^([\w.]*)   (lesson solution)
+----------------------------------------------
+Task	Text	Capture Groups	 
+Capture	<a>This is a link</a>	a	
+Capture	<a href='http://regexone.com'>Link</a>	a	
+Capture	<div class='test_style'>Test</div>	div	
+Capture	<div>Hello <span>world</span></div>	div	
+
+Expressions I used that worked:
+^<(\w{1,3})\s?\w*
+<(\w+) (lesson solution)
+>([\w\s]*)< (lesson solution - tag contents)
+='([\w://.]*)' (lesson solution - attribute values)
+----------------------------------------------
+Task	Text	Capture Groups	 
+Skip	.bash_profile		
+Skip	workspace.doc		
+Capture	img0912.jpg	img0912 jpg	
+Capture	updated_img0912.png	updated_img0912 png	
+Skip	documentation.html		
+Capture	favicon.gif	favicon gif	
+Skip	img0912.jpg.tmp		
+Skip	access.lock
+
+Expressions I used that worked:
+(^\w+)\.(png|jpg|gif)$
+----------------------------------------------
+Task	Text	Capture Groups	 
+Capture				The quick brown fox...	The quick brown fox...	
+Capture	   jumped over the lazy dog.
+
+Expressions I used that worked:
+^\s+(.+)$
+^\s*(.*)\s*$  (lesson solution)
+----------------------------------------------
+Task	Text	Capture Groups	 
+Skip	W/dalvikvm( 1553): threadid=1: uncaught exception		
+Skip	E/( 1553): FATAL EXCEPTION: main		
+Skip	E/( 1553): java.lang.StringIndexOutOfBoundsException		
+Capture	E/( 1553):   at widget.List.makeView(ListView.java:1727)	makeView ListView.java 1727	
+Capture	E/( 1553):   at widget.List.fillDown(ListView.java:652)	fillDown ListView.java 652	
+Capture	E/( 1553):   at widget.List.fillFrom(ListView.java:709)
+
+Expressions I used that worked:
+widget\.List\.(\w+)\((\w+\.\w+):(\d+)\)
+(\w+)\(([\w.]+):(\d+)\)   (lesson solution)
+----------------------------------------------
+Expressions I used that worked:
+
+----------------------------------------------
+Expressions I used that worked:
+
+----------------------------------------------
