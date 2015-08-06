@@ -7,13 +7,12 @@ function chunk(arr, size) {
   arrayString = arr.slice(0,size);
   newArray.push(arrayString);  
   
-  for (x=size; x < arr.length; x++) {
+  for (x=size; x < arr.length; x += size) {  //iterate adding the size each time to x
     arrayString = arr.slice(x,x+size);
     newArray.push(arrayString);
-    x += size;
   }
   return newArray;
   
 }
 
-chunk(['a', 'b', 'c', 'd'], 2);
+chunk([0, 1, 2, 3, 4, 5], 4);
