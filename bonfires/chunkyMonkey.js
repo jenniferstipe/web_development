@@ -3,11 +3,14 @@ function chunk(arr, size) {
   // Written by Jennifer Prichard
   var newArray = [];
   var arrayString = '';
- 
-  for (x=0; newArray.length < size; x + size) {
+
+  arrayString = arr.slice(0,size);
+  newArray.push(arrayString);  
+  
+  for (x=size; x < arr.length; x++) {
     arrayString = arr.slice(x,x+size);
-    console.log(arrayString);
     newArray.push(arrayString);
+    x += size;
   }
   return newArray;
   
