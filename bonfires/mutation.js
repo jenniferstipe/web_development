@@ -1,23 +1,29 @@
 function mutation(arr) {
-  
+  // Written by Jennifer Prichard 8/7/2015  
   var isFound = 0; 
-  var testArray = arr[1].split('');
-  arr = arr.toLowerCase;
-  console.log(arr);
+  //put the parameters into strings
+  var firstString = arr[0];
+  var secondString = arr[1];
+  //set both strings to lower case
+  firstString = firstString.toLowerCase();
+  secondString = secondString.toLowerCase();
   
-  console.log(testArray);
+  //split both strings so we can iterate over them
+  firstString = firstString.split('');
+  secondString = secondString.split('');  
+  
+  for (x=0;x < secondString.length; x++) {    //iterate as long as the secondString, since that is what we are testing
 
-  for (x=0;x < arr[1].length; x++) {
-
-    isFound += arr.indexOf(arr[0],testArray[x]);    
+    isFound = firstString.indexOf(secondString[x],0);    //check the array for an instance of secondString[x] - if ever not found, exit the loop and return false
+    
+    if (isFound === -1) 
+     { return false; }
+  
   }
-
-  if (isFound === arr[1].length) 
-     { return true; }
-    else 
-     { return false;}
-  
+  //console.log(isFound);
+    
+  return true;
 }
 
 
-mutation(['hello', 'hey']);
+mutation(['hello', 'Hey']);
