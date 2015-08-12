@@ -1,53 +1,40 @@
 function destroyer(arr) {
-  // Remove all the values
+ 
+    var searchArray = [];
+    var matchArray = [];
 
-//  console.log(arguments);  
-//  console.log(arguments[0]); 
-//  console.log(arguments[1]);   
-//  console.log(arguments[2]);                
-//  console.log(arguments.length);
-//  console.log(arguments[0].length);
-                        
-  function filter(values) {
-
-     var searchArray = [];
-     var matchArray = [];    
-     var newArray = [];
-    //    console.log(arguments);
-    for (x=0;x < values[0].length; x++) {
-        searchArray.push(values[0][x]);
+    //put arr[0] (the array to filter) in an array variable so it can be called separately using searchArray.filter below	
+    for (x=0;x < arguments[0].length; x++) {
+        searchArray.push(arguments[0][x]);
     }
-
-//    console.log(searchArray);    
-    
-    for (x=1;x < values.length; x++) {
-        matchArray.push(values[x]);
-    }       
-
-//    console.log(matchArray);      
+    //console.log(searchArray); 
+    // put the rest of the array in another variable so it can be matched against searchArray n the filter function
+    for (x=1;x < arguments.length; x++) {
+        matchArray.push(arguments[x]);
+    }     
+    //console.log(matchArray);  
   
-     for (y=0;y < matchArray.length; y++) {
-//      console.log(searchArray.indexOf(matchArray[x]));
-//      console.log(searchArray[x]);     
-      var match = searchArray.indexOf(matchArray[y]);
+  function filter(value) {
+     //console.log(value);
+     var matched = false;   
+      
+     for (y=0;y < matchArray.length; y++) {  // compare the incoming value with the matchArray
       console.log("MatchArray: " + matchArray[y]);
-      console.log("Match: " + match);
-       if (match > 0) {
-          newArray.push(matchArray[y]);
-          }                   
+      console.log("Value: " + value);
+       if (value === matchArray[y]) {
+          matched = true;
+         }                               
      } 
+                         
+     if (!matched) {  //if the value matches, we don't want to return in so it is filtered
+       return value;
+     }  
 
-                           
-      console.log(newArray);
-      return newArray;
     }    
-   
-  
-  var filtered = arr.filter(filter);
-  //arr = arr.filter(2);
+     
+  var filtered = searchArray.filter(filter);
+  console.log(filtered);
   return filtered;
 }
-
-
 
 destroyer([1, 2, 3, 1, 2, 3], 2, 3);
