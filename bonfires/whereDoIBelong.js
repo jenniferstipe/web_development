@@ -3,13 +3,14 @@ function where(arr, num) {
   arr.sort();
   
   for (x=0;x<arr.length;x++) {
-    if (arr[x] > num) {
-      console.log(arr[x]);
-      console.log(x);
+     if (arr[x] >= num && arr[x - 1] < num) {  //if the current array is greater than or equal to num, but also less than the previous iteration
+      //console.log(arr[x]);
+      //console.log(arr[x-1]);
+      //console.log(x);
       return x;
-      
+    
     }
   }
 }
 
-where([40, 60], 50);
+where([10, 20, 30, 40, 50], 30);
