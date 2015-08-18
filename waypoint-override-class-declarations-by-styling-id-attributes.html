@@ -1,0 +1,23 @@
+ /* id declarations override class declarations, regardless of where they are declared. */
+ /* declarations closer to the bottom override others that are earlier */
+ 
+ <style>
+  body {
+    background-color: black;
+    font-family: Monospace;
+    color: green;
+  }
+  .pink-text {
+    color: pink;
+  }
+  .blue-text {
+    color: blue;
+  }
+  
+/*--id selectors need the # in front instead of . */
+   #orange-text {
+    color: orange;
+  }
+</style>
+
+<h1 id="orange-text" class="pink-text blue-text">Hello World!</h1>
