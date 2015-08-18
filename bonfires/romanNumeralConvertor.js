@@ -1,62 +1,76 @@
 function convert(num) {
 
   remainder = 0;
-  
-  console.log(num.length);
+  romanNum = '';
   
   do {
-   if (num > 1000) 
+   if (num >= 1000) 
       {
       remainder = num % 1000;
       num -= 1000;
-      console.log(remainder);
-      console.log(num);
+      console.log('remainder: ' + remainder);
+      console.log('num: ' + num);
       }
-   else if (num > 500) 
+   else if (num >= 500) 
       {
       remainder = num % 500;
       num -= 500;
-      console.log(remainder);
-      console.log(num);
+      romanNum += 'M';
+      console.log('remainder: ' + remainder);
+      console.log('num: ' + num);
       }
-   else if (num > 100) 
+   else if (num >= 100) 
       {
       remainder = num % 100;
       num -= 100;
-      console.log(remainder);
-      console.log(num);
+      romanNum += 'C';
+       console.log('remainder: ' + remainder);
+      console.log('num: ' + num);
       }
-   else if (num > 50) 
+   else if (num >= 50) 
       {
       remainder = num % 50;
       num -= 50;
-      console.log(remainder);
-      console.log(num);
+      romanNum += 'L';
+      console.log('remainder: ' + remainder);
+      console.log('num: ' + num);
       }
-   else if (num > 10) 
+   else if (num >= 10) 
       {
+      console.log('greater than 10: ' + num);
       remainder = num % 10;
       num -= 10;
-      console.log(remainder);
-      console.log(num);
+      romanNum += 'X';
+      console.log('remainder: ' + remainder);
+      console.log('num: ' + num);
       }    
-   else if (num > 5) 
+    else if (num === 9) 
+      {
+      remainder = num % 9;
+      num -= 9;
+      romanNum += 'IX';
+       console.log('remainder: ' + remainder);
+      console.log('num: ' + num);
+      }        
+    else if (num >= 5) 
       {
       remainder = num % 5;
       num -= 5;
-      console.log(remainder);
-      console.log(num);
+      romanNum += 'V';
+       console.log('remainder: ' + remainder);
+      console.log('num: ' + num);
       }        
    else if (num >= 1) 
       {
       remainder = num % 1;
       num -= 1;
-      console.log(remainder);
-      console.log(num);
+      romanNum += 'I';
+       console.log('remainder: ' + remainder);
+      console.log('num: ' + num);
       }            
   } while (num !== 0);
   
-  return num;
+  return romanNum;
 }
 
 convert(36);
