@@ -1,13 +1,11 @@
-<!--
-Now you know three ways of targeting elements: by type: $("button"), by class: $(".btn"), 
-and by id $("#target1")
--->
-
 <script>
   $(document).ready(function() {
-    $("button").addClass("animated");
-    $(".btn").addClass("shake");
-    $("#target1").addClass("btn-primary");
+    $("#target1").css("color", "red");
+    $("#target1").prop("disabled", true);
+    $("#target4").remove();
+    $("#target2").appendTo("#right-well");
+    $("#target5").clone().appendTo("#left-well");
+    $("#target1").parent().css("background-color","red");
   });
 </script>
 

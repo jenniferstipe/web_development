@@ -1,13 +1,24 @@
 <!--
-Now you know three ways of targeting elements: by type: $("button"), by class: $(".btn"), 
-and by id $("#target1")
+In addition to moving elements, you can also copy them from one place to another.
+
+jQuery has a function called clone() that makes a copy of an element.
+
+For example, if we wanted to copy target2 from our left-well to our right-well, we 
+would use $("#target2").clone().appendTo("#right-well");
+
+Did you notice this involves sticking two jQuery functions together? This is called 
+function chaining and it's a convenient way to get things done with jQuery.
+
 -->
 
 <script>
   $(document).ready(function() {
-    $("button").addClass("animated");
-    $(".btn").addClass("shake");
-    $("#target1").addClass("btn-primary");
+    $("#target1").css("color", "red");
+    $("#target1").prop("disabled", true);
+    $("#target4").remove();
+    $("#target2").appendTo("#right-well");
+    $("#target5").clone().appendTo("#left-well");
+
   });
 </script>
 
