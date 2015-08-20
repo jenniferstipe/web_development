@@ -1,0 +1,24 @@
+/*
+It's great that we can create random decimal numbers, but it's even more useful if we lot more useful to generate a random whole number.
+
+To achieve this we can multiply the random number by ten and use the Math.floor() to convert the decimal number to a whole number
+
+This technique gives us a whole number between zero and nine
+
+Example:
+
+Math.floor(Math.random()*10);
+*/
+
+function myFunction(){
+  // Make myFunction return a random number betweenzero and nine> instead of a decimal
+
+  // Only change code below this line.
+
+  return(Math.floor(Math.random() * 10));
+
+  // Only change code above this line.
+}
+
+// We use this function to show you the value of your variable in your output box.
+(function(){return(myFunction());})();
